@@ -1,46 +1,26 @@
 
 let listOfTD = [];
 let indexCounter = 0;
+let ul = document.getElementById("listDisplay");
 
 function storeTitle(){
+    
     let toDoName = document.getElementById("titleInput").value;
     let indexOfNewItem = (listOfTD.push(toDoName)) - 1;
     indexCounter++;
-    console.log(indexCounter);
-    var ul = document.getElementById("listDisplay");
     var li = document.createElement("li");
+    var removeButton = document.createElement("BUTTON");
+    removeButton.setAttribute("type", "button");
+    removeButton.appendChild(document.createTextNode("x"));
+    removeButton.addEventListener("click", removeToDoByButton);
+    li.appendChild(removeButton);
     li.appendChild(document.createTextNode(toDoName));
     li.setAttribute("id", indexOfNewItem);
     ul.appendChild(li);
-    console.log(listOfTD);
 }
-
-function removeToDoByTitleName(){
+function removeToDoByButton(event){
+    let li = event.target.parentNode;
     
-    let toDoName = document.getElementById("titleRemovalInput").value;
-    let ul = document.getElementById("listDisplay");
-    let li = document.getElementsByTagName('ul')[0].getElementsByTagName('li');
-    // listOfTD = [];
-    // for (let i = 0; i < li.length; i++) {
-    //     var arrValue = li[i].innerHTML;
-    //     listOfTD.push(arrValue);
-    // }
-    listOfTD.forEach((element, i) => {
-        if(toDoName == listOfTD[i]){
-
-            delete listOfTD[i];
-            indexCounter--;
-            console.log(indexCounter);
-            let elementToRemove = document.getElementById(i);
-            ul.removeChild(elementToRemove);
-        
-        }
-        
-    });
-    if(listOfTD.join(',').replace(/,/g, '').length === 0){
-        listOfTD = [];
-        indexCounter = 0;
-    }
-}
-
+    ul.removeChild(li);
+}   
 
