@@ -13,9 +13,12 @@
 
     <p>make a new todo:</p>
     
-    <input id = "titleInput" placeholder="toDo title">
+    <form id = "formToDoInput">
+        <input id = "titleInput" placeholder="toDo title">
+        <input type = "date" id = "dateInput" placeholder = "date">
+        <button type = "submit" id = "newToDoSubmit" onclick="storeTitle()">submit</button>
+    </form>
 
-    <button id = "newToDoSubmit" onclick="storeTitle()">submit</button>
 
     <ul id="listDisplay">items to do:</ul>
 
