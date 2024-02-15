@@ -21,12 +21,18 @@ function storeTitle(){
     removeButton.appendChild(document.createTextNode("x"));
     removeButton.addEventListener("click", removeToDoByButton);
     
+    var editButton = document.createElement("BUTTON");
+    editButton.addEventListener("click", editToDo);
+    editButton.appendChild(document.createTextNode("e"));
+
+
     let date = document.getElementById("dateInput").valueAsDate; 
     date.setDate(date.getDate() + 1);
     date = date.toLocaleDateString("en-US");
     let dateTextNode = document.createTextNode(date)
     
     li.appendChild(removeButton);
+    li.appendChild(editButton);
     li.appendChild(document.createTextNode(toDoName));
     li.appendChild(dateTextNode);
     
@@ -35,6 +41,15 @@ function storeTitle(){
     ul.appendChild(li);
     
 }
+function editToDo(event){
+    let li = event.target.parentNode;
+    //li.value = null;
+    let text = "textContent" in li.childNodes[0] ? "textContent" : "innerText"; 
+    li.childNodes[0][text];
+    console.log(li);
+    console.log(li.childNodes[2][text]);
+}
+
 function removeToDoByButton(event){
     let li = event.target.parentNode;
     
