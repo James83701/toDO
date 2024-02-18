@@ -39,15 +39,19 @@ function storeTitle(){
     li.setAttribute("id", indexOfNewItem);
     
     ul.appendChild(li);
+
+    document.getElementById("formToDoInput").reset();
+
     
 }
 function editToDo(event){
     let li = event.target.parentNode;
     //li.value = null;
     let text = "textContent" in li.childNodes[0] ? "textContent" : "innerText"; 
-    li.childNodes[0][text];
-    console.log(li);
-    console.log(li.childNodes[2][text]);
+    
+    li.childNodes[2][text];
+    //console.log(li.childNodes[2].style.display);
+    li.childNodes[2].style.display = "none"; 
 }
 
 function removeToDoByButton(event){
